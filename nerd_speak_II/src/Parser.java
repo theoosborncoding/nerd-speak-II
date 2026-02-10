@@ -6,18 +6,18 @@ public class Parser {
     public static ArrayList<Token> token_list;
     public static int counter = 0;
     public static Stack<Token> the_stack_tm = new Stack<Token>();
-    public void parse_code(){
+    public void parse_code(String file_name){
         //Grab the token list from the lexer
         Lexer lex = new Lexer();
-        lex.lex_text();
+        lex.lex_text(file_name);
         token_list = lex.tokens;
         the_stack_tm = make_stack();
         //print out stack for debugging purposes
         
-        /*System.out.println("\nThe Stack:");
+        System.out.println("\nThe Stack:");
         for(Token t: the_stack_tm){
-            System.out.println(t.type + " " + t.value);
-        }*/
+        System.out.println(t.type + " " + t.value);
+        }
     }
     //create the stack for the interpreter
     public static Stack<Token> make_stack(){
@@ -48,6 +48,7 @@ public class Parser {
                     the_stack_tm.push(token_list.get(i));
                     break;
 
+                //TODO: adding count to stack twice for some reason 
                 case ARRAY_FUNCTION:
                     the_stack_tm.push(token_list.get(i - 3));
                     the_stack_tm.push(token_list.get(i - 2));
@@ -59,7 +60,7 @@ public class Parser {
                     the_stack_tm.push(token_list.get(i - 1));
                     the_stack_tm.push(token_list.get(i));
                     break;
-                //TODO: WOKR ON LOOPS
+              
                 case TILDE:
                     the_stack_tm.push(token_list.get(i));
                     break;

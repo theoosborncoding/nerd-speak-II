@@ -7,9 +7,11 @@ public class Interpreter {
     public static ArrayList<Material> user_int_variables = new ArrayList<Material>();
     public static ArrayList<BagOfHolding> user_arrays = new ArrayList<BagOfHolding>();
     public static Parser parse = new Parser();
+    private static String file_name;
     public static void main(String[] args){
-        parse.parse_code();
+        parse.parse_code(file_name);
         parse_stack(parse.the_stack_tm);
+        file_name = args[1];
         /*for(int i = 0; i < user_arrays.size(); i++){
             for(int j = 0; j < user_arrays.get(i).value.size(); i++){
                 System.out.println(user_arrays.get(i).value);

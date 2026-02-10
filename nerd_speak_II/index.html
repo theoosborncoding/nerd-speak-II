@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>nerd_speak</title>
+		<link rel="stylesheet" href="stylesheet.css">
+		<link rel="icon" type="image/x-icon" href="images/icon.png">
+	</head>
+	<body>
+		<table class="menu">
+			<tr>
+				<td><a href="contact.html"><button class="menu-option">Contact Us</button></a></td>
+				<td><a href="about.html"><button class="menu-option">About</button></a></td>
+				<td><a href="syntax-guide.html"><button class="menu-option">Syntax Guide</button></a></td>
+			</tr>
+		</table>
+		<div class="title">
+			<div class="title-text">Nerd_speak</div>
+		</div>
+		<textarea class="code-area" id="code-area" placeholder="Type code here"></textarea>
+		<button class="run" onclick="runCode()">Run</button>
+		<button class="run" onclick="downloadTextFile()">Download</button>
+		<script>
+			function runCode(){
+				const codeInput = document.getElementById("code-area");
+				const code = codeInput.value;
+				var blob = new Blob([code], { type: 'text/plain' });
+				
+				const url = '/dnd-code';
+				const requestOptions = {
+					method: 'POST',
+					headers: { 'Content-Type': 'text/plain' },
+					body: blob
+				};
+
+				fetch(url, requestOptions)
+					.then(response => response.json())
+					.then(data => console.log(data.id))
+					.catch(error => console.error('Error:', error));
+
+			}
+			function downloadTextFile(){
+				const codeInput = document.getElementById("code-area");
+				const code = codeInput.value;
+				var blob = new Blob([code], { type: 'text/plain' });
+				var link = document.createElement('a');
+				link.href = URL.createObjectURL(blob);
+				link.download = 'Nerd_Speak.dnd';
+				link.click();
+			}
+		</script>
+	</body>
+</html>

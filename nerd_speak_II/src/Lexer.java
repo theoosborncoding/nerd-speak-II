@@ -7,10 +7,11 @@ public class Lexer{
     public static String[] words;
     public static String current_line;
     public static Scanner file_scan;
-    public static final String FILE_NAME = "hi.dnd";
+    public static String FILE_NAME = "";
     public static ArrayList<Token> tokens = new ArrayList<Token>();
-    public void lex_text(){
+    public void lex_text(String file_name){
         //read in the file for the lexer
+        FILE_NAME = file_name;
         get_file_extension(FILE_NAME);
         if(file_extension.equals("dnd")){
             //read in the file
