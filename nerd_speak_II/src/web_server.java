@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.file.Path;
+import java.util.Arrays;
 
 class web_server{
     public static void main(String[] args) {
@@ -38,24 +39,36 @@ class web_server{
                     }
                     
                 }
+                System.out.println("Uploaded, processing");
 
                 //run the java file maybe 
                 //TODO: make it so it is running the java program with the user output file
                 
-                String java_file = "Interpreter.java";
+                String interpreter_file = ".\\src\\Interpreter.java";
+                String boh_file = ".\\src\\BagOfHolding.java";
+                String lexer_file = ".\\src\\Lexer.java";
+                String material_file = ".\\src\\Material.java";
+                String off_file = ".\\src\\Off.java";
+                String on_file = ".\\src\\On.java";
+                String parser_file = ".\\src\\Parser.java"; 
+                String token_file = ".\\src\\Token.java";
+                String verbal_file =  ".\\src\\Verbal.java";
                 String class_name = "Interpreter";
+                System.out.println(System.getProperty("user.dir"));
 
                 try {
-                    ProcessBuilder compile_process = new ProcessBuilder("javac", "-d", ".", "src/" + java_file);
+                    ProcessBuilder compile_process = new ProcessBuilder("javac", "-d", ".", interpreter_file, boh_file, lexer_file, material_file, off_file, on_file, parser_file, token_file, verbal_file);
                     compile_process.redirectErrorStream(true);
                     Process compile = compile_process.start();
+                    System.out.println(Arrays.toString(compile.getInputStream().readAllBytes()));
+                    compile.waitFor();
                     
                     //run compiled java code
-                    ProcessBuilder run_process = new ProcessBuilder("java", class_name, "../uploaded.dnd", ">result.txt");
+                    ProcessBuilder run_process = new ProcessBuilder("java", class_name, "uploaded.dnd", ">result.txt");
                     run_process.redirectErrorStream(true);
                     Process run = run_process.start();
                     run.waitFor();
-
+                    System.out.println("Compiled and ran");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

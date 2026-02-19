@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Interpreter {
@@ -9,9 +10,11 @@ public class Interpreter {
     public static Parser parse = new Parser();
     private static String file_name;
     public static void main(String[] args){
+        //System.out.println(Arrays.toString(args));
+        file_name = args[0];
         parse.parse_code(file_name);
         parse_stack(parse.the_stack_tm);
-        file_name = args[1];
+        
         /*for(int i = 0; i < user_arrays.size(); i++){
             for(int j = 0; j < user_arrays.get(i).value.size(); i++){
                 System.out.println(user_arrays.get(i).value);
