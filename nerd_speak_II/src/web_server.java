@@ -64,8 +64,10 @@ class web_server{
                     compile.waitFor();
                     
                     //run compiled java code
-                    ProcessBuilder run_process = new ProcessBuilder("java", class_name, "uploaded.dnd", ">result.txt");
-                    run_process.redirectErrorStream(true);
+                    File result = new File("result.txt");
+                    ProcessBuilder run_process = new ProcessBuilder( "java", class_name, "uploaded.dnd");
+                    // run_process.redirectErrorStream(true);
+                    run_process.redirectOutput(result);
                     Process run = run_process.start();
                     run.waitFor();
                     System.out.println("Compiled and ran");
