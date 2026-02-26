@@ -18,8 +18,11 @@
 		<textarea class="code-area" id="code-area" placeholder="Type code here"></textarea>
 		<button class="run" onclick="runCode()">Run</button>
 		<button class="run" onclick="downloadTextFile()">Download</button>
+		<div>
+			<textarea class="code-area" id="output" placeholder="Output will display here"></textarea>
+		</div>
 		<script>
-			function runCode(){
+			async function runCode(){
 				const codeInput = document.getElementById("code-area");
 				const code = codeInput.value;
 				var blob = new Blob([code], { type: 'text/plain' });
@@ -31,11 +34,14 @@
 					body: blob
 				};
 
-				fetch(url, requestOptions)
+				const response = await fetch(url, requestOptions)
 					.then(response => response.json())
-					.then(data => console.log(data.id))
+					.then(data => {
+						console.log(data);
+						document.getElementById('output').value = data["result"];
+						document.getElementById('output').disabled = true;
+					})
 					.catch(error => console.error('Error:', error));
-
 			}
 			function downloadTextFile(){
 				const codeInput = document.getElementById("code-area");

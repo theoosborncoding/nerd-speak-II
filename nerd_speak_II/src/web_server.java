@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.Scanner;
 
 class web_server{
     public static void main(String[] args) {
@@ -74,18 +75,26 @@ class web_server{
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                String response = "posted!";
+                StringBuilder response = new StringBuilder("{\"result\":\"");
+                File result = new File("result.txt");
+                Scanner scan = new Scanner(result);
+                while (scan.hasNextLine()) { 
+                    response.append(scan.nextLine());
+                    response.append("\\n");
+                }
+                response.append("\"}");
+                System.out.println(response.toString());
                 exchange.sendResponseHeaders(200, response.length());
-                OutputStream os = exchange.getResponseBody();
-                os.write(response.getBytes());
-                os.close();
+                try (OutputStream os = exchange.getResponseBody()) {
+                    os.write(response.toString().getBytes());
+                }
             }
             else {
                 String response = ":( good try";
                 exchange.sendResponseHeaders(400, response.length());
-                OutputStream os = exchange.getResponseBody();
-                os.write(response.getBytes());
-                os.close();
+                try (OutputStream os = exchange.getResponseBody()) {
+                    os.write(response.getBytes());
+                }
             }
         }
     }
