@@ -89,7 +89,7 @@ public class Interpreter {
                     System.out.println(temp_stack.pop().value);
                 }*/
                 //break; 
-
+            //TODO: Conditionals don't work if there are identifiers/booleans involved fix this please
             case CONS:
                 Token condition = the_stack.pop();
                 Token start_brace = null;
@@ -166,7 +166,7 @@ public class Interpreter {
                                 int second_int = 0;
                                 if(!string_value.equals("")){
                                     for(int i = 0; i < user_String_variables.size(); i++){
-                                        if((user_String_variables.get(i).name).equals(left_side.value)){
+                                        if((user_String_variables.get(i).name).equals(right_side.value)){
                                             second_string = user_String_variables.get(i).value;
                                         }
                                     }
@@ -177,7 +177,7 @@ public class Interpreter {
                                 if(int_value != 0){
                                     //Check to see if the variable is an integer variable amd grab it if it is 
                                     for(int k = 0; k < user_int_variables.size(); k++){
-                                        if((user_int_variables.get(k).name).equals(left_side.value)){
+                                        if((user_int_variables.get(k).name).equals(right_side.value)){
                                             second_int = user_int_variables.get(k).value;
                                         }
                                     }
@@ -190,7 +190,7 @@ public class Interpreter {
                             case LANGUAGE:
                                 String third_string = "";
                                 for(int i = 0; i < user_String_variables.size(); i++){
-                                        if((user_String_variables.get(i).name).equals(left_side.value)){
+                                        if((user_String_variables.get(i).name).equals(right_side.value)){
                                             third_string = user_String_variables.get(i).value;
                                         }
                                     }
@@ -202,7 +202,7 @@ public class Interpreter {
                             case DICE:
                                     int third_int = 0;
                                 for(int k = 0; k < user_int_variables.size(); k++){
-                                        if((user_int_variables.get(k).name).equals(left_side.value)){
+                                        if((user_int_variables.get(k).name).equals(right_side.value)){
                                             third_int = user_int_variables.get(k).value;
                                         }
                                     }

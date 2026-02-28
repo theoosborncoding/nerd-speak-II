@@ -41,9 +41,6 @@ class web_server{
                     
                 }
                 System.out.println("Uploaded, processing");
-
-                //run the java file maybe 
-                //TODO: make it so it is running the java program with the user output file
                 
                 String interpreter_file = ".\\src\\Interpreter.java";
                 String boh_file = ".\\src\\BagOfHolding.java";

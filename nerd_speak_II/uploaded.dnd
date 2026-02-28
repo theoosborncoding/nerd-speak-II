@@ -1,9 +1,6 @@
-bag-of-holding bag1
-bag-of-holding bag2
-duration d4 ~
-strength roll d20
-I put strength in bag1
-~
-show items in bag1
-show items in bag2
+strength roll * hello *
+I prepare an action * hello * DC strength < 
+I cast message
+verbal_component * hello * 
+>
 I cast fireball
