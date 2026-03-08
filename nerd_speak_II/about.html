@@ -1,25 +1,32 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<title>About</title>
-		<link rel="stylesheet" href="stylesheet.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	</head>
+	<style>
+	  body {
+		background-color: #860712;
+		color: #FFFFFF;
+	  }
+	</style>
 	<body>
-		<table class="menu">
-			<tr>
-				<td><a href="contact.html"><button class="menu-option">Contact Us</button></a></td>
-				<td><a href="index.html"><button class="menu-option">Home</button></a></td>
-				<td><a href="syntax-guide.html"><button class="menu-option">Syntax Guide</button></a></td>
-			</tr>
-		</table>
-		<div class="title">
-			<div class="title-text">About</div>
-		</div>
-		<p class="about">
-			My name is Theo Osborn and I am the creator of the programming langauge Nerd_speak. Nerd_speak is a programming language designed to 
-			look like Dungeons and Dragons (DnD) adventures when it is typed out. It has come about as my Senior Thesis project for Arcadia 
-			University. It combines two things that I greatly enjoy, programming and DnD. Nerd_speak is greatly inspired by other esoteric programming 
-			langauges such as the Shakespeare programming langauge and Chef. 
-			
-		</p>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">nerd_speak</a>
+			</div>
+			<ul class="nav navbar-nav">
+			  <li><a href="index.html">Home</a></li>
+			  <li><a href="contact.html">Contact Us</a></li>
+			  <li class="active"><a href="about.html">About</a></li>
+			  <li><a href="syntax-guide.html">Syntax Guide</a></li>
+			</ul>
+		  </div>
+		</nav>
 	</body>
 </html>
