@@ -89,7 +89,7 @@ public class Interpreter {
                     System.out.println(temp_stack.pop().value);
                 }*/
                 //break; 
-            //TODO: Conditionals don't work if there are identifiers/booleans involved fix this please
+            //TODO: Conditionals don't work if there are identifiers first/booleans involved fix this please
             case CONS:
                 Token condition = the_stack.pop();
                 Token start_brace = null;
@@ -382,6 +382,9 @@ public class Interpreter {
                 if(user_arrays.size() == 0){
                     make_new_variable(variable_name, variable_value);
                 }
+                break;
+            case ARRAY_FUNCTION:
+                make_new_variable(variable_name, variable_value);
                 break;
         }
     }
